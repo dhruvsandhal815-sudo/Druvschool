@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future School - Quality Education for All</title>
+    <style>
+        /* ==================== GENERAL STYLES ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #0f1419;
+            overflow-x: hidden;
+        }
+
+        /* ==================== KEYFRAME ANIMATIONS ==================== */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(100, 200, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(100, 200, 255, 0.4);
+            }
+        }
+
+        /* ==================== HEADER & NAVIGATION ==================== */
+        header {
+            background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+            color: #e0e0e0;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(100, 200, 255, 0.1);
+        }
+
+        header.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .school-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            animation: slideInLeft 0.8s ease;
+            color: #64c8ff;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
+        }
+
+        .school-name:hover {
+            transform: scale(1.02);
+            text-shadow: 0 0 20px rgba(100, 200, 255, 0.6);
+        }
+
+        /* Navigation Menu */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #64c8ff, #00d4ff);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #64c8ff;
+            text-shadow: 0 0 10px rgba(100, 200, 255, 0.5);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            position: relative;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            width: 26px;
+            height: 2.5px;
+            background-color: #e0e0e0;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+            display: block;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+            background-color: #64c8ff;
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+            background-color: #64c8ff;
+        }
+
+        /* ==================== SECTIONS STYLING ==================== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: #64c8ff;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            animation: slideInDown 0.8s ease;
+            position: relative;
+            padding-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #64c8ff);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(100, 200, 255, 0.5);
+        }
+
+        /* ==================== HOME SECTION ==================== */
+        #home {
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+            text-align: center;
+            padding: 6rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 50%, #1a2332 100%);
+            color: #e0e0e0;
+            padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 4rem);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(100, 200, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease, glow 4s ease-in-out infinite;
+            border-left: 5px solid #64c8ff;
+            border: 1px solid rgba(100, 200, 255, 0.2);
+            border-left: 5px solid #64c8ff;
+        }
+
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20%;
+            width: 40%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .welcome-banner h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 0.8s ease 0.2s both;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .welcome-banner p {
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 0.8s ease 0.3s both;
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #64c8ff, #00d4ff);
+            color: #0f1419;
+            border: none;
+            padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.8rem, 3vw, 2.8rem);
+            font-size: clamp(0.95rem, 2vw, 1rem);
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 0.8s ease 0.4s both;
+            box-shadow: 0 4px 15px rgba(100, 200, 255, 0.4);
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .welcome-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .welcome-btn:hover::before {
+            left: 100%;
+        }
+
+        .welcome-btn:hover {
+            background: linear-gradient(135deg, #00d4ff, #64c8ff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(100, 200, 255, 0.6);
+        }
+
+        .welcome-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        #about {
+            background: #0f1419;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .about-text h3 {
+            color: #64c8ff;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            text-shadow: 0 0 10px rgba(100, 200, 255, 0.2);
+        }
+
+        .about-text p {
+            margin-bottom: 1.8rem;
+            line-height: 1.9;
+            color: #b0b0b0;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .about-text p:hover {
+            color: #64c8ff;
+            transform: translateX(5px);
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            height: clamp(250px, 40vw, 380px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64c8ff;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 700;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(100, 200, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: slideInRight 0.8s ease, glow 4s ease-in-out infinite;
+            border: 1px solid rgba(100, 200, 255, 0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20%;
+            width: 40%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: subtleFloat 6s ease-in-out infinite;
+        }
+
+        .about-image-content {
+            position: relative;
+            z-index: 1;
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+
+        /* ==================== COURSES SECTION ==================== */
+        #courses {
+            background: #0f1419;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 340px), 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            border-radius: 12px;
+            padding: clamp(1.8rem, 3vw, 2.5rem);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(100, 200, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 3px solid #64c8ff;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease;
+            animation-fill-mode: both;
+            border: 1px solid rgba(100, 200, 255, 0.15);
+            border-top: 3px solid #64c8ff;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+        .course-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 200, 255, 0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .course-card:hover::before {
+            left: 100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(100, 200, 255, 0.25);
+            border-top-color: #00d4ff;
+            background: linear-gradient(135deg, #243447 0%, #2d4858 100%);
+        }
+
+        .course-icon {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            animation: subtleFloat 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover .course-icon {
+            animation: pulse 0.6s ease-in-out;
+            transform: scale(1.15);
+        }
+
+        .course-card h3 {
+            color: #ffffff;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .course-card:hover h3 {
+            color: #64c8ff;
+            text-shadow: 0 0 10px rgba(100, 200, 255, 0.4);
+        }
+
+        .course-card p {
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-weight: 500;
+        }
+
+        /* ==================== CONTACT SECTION ==================== */
+        #contact {
+            background: #0f1419;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            animation: slideInUp 0.8s ease;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            animation: slideInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #64c8ff;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            transition: all 0.3s ease;
+            letter-spacing: 0.2px;
+            text-shadow: 0 0 10px rgba(100, 200, 255, 0.2);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: clamp(0.8rem, 1.5vw, 1rem);
+            border: 1.5px solid rgba(100, 200, 255, 0.2);
+            border-radius: 8px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-family: inherit;
+            transition: all 0.4s ease;
+            background-color: rgba(26, 35, 50, 0.8);
+            color: #e0e0e0;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #64c8ff;
+            box-shadow: 0 0 0 3px rgba(100, 200, 255, 0.2);
+            background-color: rgba(26, 35, 50, 1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: clamp(100px, 20vw, 140px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: clamp(1rem, 2vw, 1.3rem);
+            background: linear-gradient(135deg, #64c8ff, #00d4ff);
+            color: #0f1419;
+            border: none;
+            border-radius: 8px;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(100, 200, 255, 0.4);
+            animation: slideInUp 0.8s ease 0.4s both;
+            font-size: 0.9rem;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #00d4ff, #64c8ff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(100, 200, 255, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Error Message Styling */
+        .error-message {
+            color: #ff6b6b;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            margin-top: 0.5rem;
+            display: none;
+            animation: slideInLeft 0.4s ease;
+            font-weight: 600;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: linear-gradient(135deg, #0a0e13 0%, #0f1419 100%);
+            color: #b0b0b0;
+            text-align: center;
+            padding: clamp(2.5rem, 4vw, 3.5rem) 2rem;
+            margin-top: 4rem;
+            animation: slideInUp 0.8s ease;
+            border-top: 1px solid rgba(100, 200, 255, 0.1);
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 2vw, 0.95rem);
+            line-height: 1.8;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        footer p:hover {
+            color: #64c8ff;
+            text-shadow: 0 0 10px rgba(100, 200, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ==================== SCROLL ANIMATIONS ==================== */
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 768px) {
+            .school-name {
+                font-size: 1.4rem;
+                letter-spacing: -0.3px;
+            }
+
+            nav ul {
+                gap: 2rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            /* Navigation Mobile */
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                border-bottom: 1px solid rgba(100, 200, 255, 0.1);
+            }
+
+            nav.active {
+                max-height: 400px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav a {
+                display: block;
+                padding: 1.2rem 2rem;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(100, 200, 255, 0.05);
+                color: #e0e0e0;
+            }
+
+            nav a::after {
+                display: none;
+            }
+
+            /* About Section */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            /* Courses */
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            /* Contact */
+            .contact-container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            .header-container {
+                padding: 0 15px;
+            }
+
+            .school-name {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 2.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .welcome-banner {
+                padding: 2rem 1.5rem;
+                border-left-width: 4px;
+            }
+
+            .welcome-banner h1 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .welcome-banner p {
+                font-size: 1rem;
+            }
+
+            .welcome-btn {
+                padding: 0.8rem 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.3rem;
+            }
+
+            .course-card {
+                padding: 1.5rem;
+            }
+
+            .course-icon {
+                font-size: 2.8rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.75rem;
+            }
+
+            .submit-btn {
+                padding: 0.9rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .school-name {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .welcome-banner h1 {
+                font-size: 1.3rem;
+            }
+
+            nav a {
+                padding: 1rem 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
+    <header>
+        <div class="header-container">
+            <!-- School Name/Logo -->
+            <div class="school-name">Bright Future School</div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav id="navbar">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== HOME SECTION ==================== -->
+    <section id="home">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+            <h1>Welcome to Bright Future School</h1>
+            <p>Empowering students with quality education and modern learning opportunities for tomorrow's leaders</p>
+            <button class="welcome-btn" id="welcomeBtn">Learn More</button>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about">
+        <h2 class="section-title">About Our School</h2>
+        <div class="about-content">
+            <!-- About Text -->
+            <div class="about-text">
+                <h3>Our Mission</h3>
+                <p>
+                    At Bright Future School, we are committed to providing high-quality education that 
+                    prepares students for success in college and beyond. Our dedicated teachers and modern 
+                    facilities create an inspiring learning environment.
+                </p>
+                <h3>Why Choose Us?</h3>
+                <p>
+                    • Experienced and dedicated faculty<br>
+                    • State-of-the-art learning facilities<br>
+                    • Personalized attention to each student<br>
+                    • Focus on holistic development<br>
+                    • Extracurricular activities and sports
+                </p>
+            </div>
+
+            <!-- About Image Placeholder -->
+            <div class="about-image">
+                <div class="about-image-content">
+                    Bright Future School<br>
+                    Building Tomorrow's Leaders
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COURSES SECTION ==================== -->
+    <section id="courses">
+        <h2 class="section-title">Our Courses</h2>
+        <div class="courses-grid">
+            <!-- Course Card 1 -->
+            <div class="course-card">
+                <div class="course-icon">📚</div>
+                <h3>English & Literature</h3>
+                <p>
+                    Develop excellent reading, writing, and communication skills. 
+                    Explore classical and contemporary literature with expert guidance.
+                </p>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="course-card">
+                <div class="course-icon">🔬</div>
+                <h3>Science & Technology</h3>
+                <p>
+                    Hands-on learning in physics, chemistry, and biology. 
+                    Discover the wonders of scientific innovation and research.
+                </p>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div class="course-card">
+                <div class="course-icon">🧮</div>
+                <h3>Mathematics</h3>
+                <p>
+                    Master fundamental and advanced mathematical concepts. 
+                    Build problem-solving skills for real-world applications.
+                </p>
+            </div>
+
+            <!-- Course Card 4 -->
+            <div class="course-card">
+                <div class="course-icon">🎨</div>
+                <h3>Arts & Creativity</h3>
+                <p>
+                    Express yourself through visual arts, music, and performance. 
+                    Nurture your creative talents with expert guidance.
+                </p>
+            </div>
+
+            <!-- Course Card 5 -->
+            <div class="course-card">
+                <div class="course-icon">⚽</div>
+                <h3>Sports & Fitness</h3>
+                <p>
+                    Build physical strength and teamwork skills. 
+                    Participate in various sports and wellness programs today.
+                </p>
+            </div>
+
+            <!-- Course Card 6 -->
+            <div class="course-card">
+                <div class="course-icon">💻</div>
+                <h3>Computer Science</h3>
+                <p>
+                    Learn coding, web development, and digital literacy. 
+                    Prepare for the digital future with cutting-edge technology.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name">
+                    <div class="error-message" id="nameError">Please enter your name</div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
+                    <div class="error-message" id="messageError">Please enter your message</div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2026 Bright Future School. All rights reserved.</p>
+        <p>Email: <strong>info@brightfutureschool.com</strong> | Phone: <strong>+1 (555) 123-4567</strong></p>
+        <p>Building Tomorrow's Leaders Today</p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ==================== HEADER SCROLL ANIMATION ====================
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ==================== MOBILE MENU TOGGLE ====================
+        const menuToggle = document.getElementById('menuToggle');
+        const navbar = document.getElementById('navbar');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navbar.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navbar.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInside = navbar.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInside && navbar.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navbar.classList.remove('active');
+            }
+        });
+
+        // ==================== SCROLL REVEAL ANIMATION ====================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Apply fade-in class to course cards
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.classList.add('fade-in-on-scroll');
+            observer.observe(card);
+        });
+
+        // ==================== WELCOME BUTTON ====================
+        const welcomeBtn = document.getElementById('welcomeBtn');
+
+        welcomeBtn.addEventListener('click', () => {
+            alert('Welcome to Bright Future School!\n\nWe are excited to have you join our learning community. Visit our Courses section to explore what we offer.\n\nLet\'s build your bright future together!');
+        });
+
+        // ==================== CONTACT FORM VALIDATION ====================
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showError(element, errorElement) {
+            errorElement.classList.add('show');
+            element.style.borderColor = '#ff6b6b';
+            element.style.backgroundColor = 'rgba(255, 107, 107, 0.1)';
+        }
+
+        function hideError(element, errorElement) {
+            errorElement.classList.remove('show');
+            element.style.borderColor = 'rgba(100, 200, 255, 0.2)';
+            element.style.backgroundColor = 'rgba(26, 35, 50, 0.8)';
+        }
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+
+            hideError(nameInput, document.getElementById('nameError'));
+            hideError(emailInput, document.getElementById('emailError'));
+            hideError(messageInput, document.getElementById('messageError'));
+
+            let isValid = true;
+
+            if (name === '') {
+                showError(nameInput, document.getElementById('nameError'));
+                isValid = false;
+            }
+
+            if (email === '') {
+                document.getElementById('emailError').textContent = 'Please enter your email address';
+                showError(emailInput, document.getElementById('emailError'));
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                showError(emailInput, document.getElementById('emailError'));
+                isValid = false;
+            }
+
+            if (message === '') {
+                showError(messageInput, document.getElementById('messageError'));
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Thank you for your message!\n\nWe will get back to you soon.\nWelcome to Bright Future School!');
+                
+                contactForm.reset();
+                
+                nameInput.style.borderColor = 'rgba(100, 200, 255, 0.2)';
+                nameInput.style.backgroundColor = 'rgba(26, 35, 50, 0.8)';
+                emailInput.style.borderColor = 'rgba(100, 200, 255, 0.2)';
+                emailInput.style.backgroundColor = 'rgba(26, 35, 50, 0.8)';
+                messageInput.style.borderColor = 'rgba(100, 200, 255, 0.2)';
+                messageInput.style.backgroundColor = 'rgba(26, 35, 50, 0.8)';
+            }
+        });
+
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.trim() !== '') {
+                hideError(nameInput, document.getElementById('nameError'));
+            }
+        });
+
+        emailInput.addEventListener('input', () => {
+            if (emailInput.value.trim() !== '') {
+                hideError(emailInput, document.getElementById('emailError'));
+            }
+        });
+
+        messageInput.addEventListener('input', () => {
+            if (messageInput.value.trim() !== '') {
+                hideError(messageInput, document.getElementById('messageError'));
+            }
+        });
+
+        // ==================== FORM INPUT FOCUS ANIMATION ====================
+        [nameInput, emailInput, messageInput].forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.style.transform = 'scale(1.01)';
+            });
+
+            input.addEventListener('blur', () => {
+                input.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+    </script>
+</body>
+</html>
